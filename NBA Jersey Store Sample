@@ -1,0 +1,31 @@
+-- Create an NBA jersey store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, stock INTEGER, popularity INTEGER);
+
+INSERT INTO store VALUES (1, "Curry" , 100, 50, 2);
+INSERT INTO store VALUES (2, "LeBron" , 110, 50, 1);
+INSERT INTO store VALUES (3, "Giannis" , 80, 40, 3);
+INSERT INTO store VALUES (4, "KD" , 90, 40, 4);
+INSERT INTO store VALUES (5, "Luka" , 80, 20, 5);
+INSERT INTO store VALUES (6, "Tatum" , 85, 40, 6);
+INSERT INTO store VALUES (7, "Ja" , 50, 20, 7);
+INSERT INTO store VALUES (8, "Trae" , 50, 20, 8);
+INSERT INTO store VALUES (9, "Klay" , 80, 40, 9);
+INSERT INTO store VALUES (10, "Dame" , 70, 30, 10);
+INSERT INTO store VALUES (11, "Embiid" , 60, 20, 11);
+INSERT INTO store VALUES (12, "AD" , 50, 20, 12);
+INSERT INTO store VALUES (13, "Booker" , 90, 40, 13);
+INSERT INTO store VALUES (14, "Barrett" , 40, 10, 14);
+INSERT INTO store VALUES (15, "Lamelo" , 85, 40, 15);
+
+-- Display the database ordered by price
+SELECT * FROM store ORDER BY price DESC;
+
+-- what is the average price of a jersey?
+SELECT AVG(price) "Average Price"
+FROM store;
+
+-- what are the most expensive jerseys?
+SELECT name, price, popularity
+FROM store
+ORDER BY price desc LIMIT 5;
