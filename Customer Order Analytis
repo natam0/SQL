@@ -40,3 +40,34 @@ FROM BIT_DB.FebSales
 LEFT JOIN BIT_DB.customers cust
 ON cust.order_id = FebSales.orderID
 WHERE Quantity > 2 AND length(orderID) = 6;
+
+-- Getting orders between the 13th and 18th
+SELECT orderdate
+FROM BIT_DB.FebSales
+WHERE orderdate between '02/13/19 00:00' AND '02/18/19 00:00';
+
+-- Finding the location of the order place at 1:35 on 2/18/19
+SELECT location
+FROM BIT_DB.FebSales 
+WHERE orderdate = '02/18/19 01:35';
+
+-- Finding how many orders were placed on 2/18/19 at any time
+SELECT sum(quantity)
+FROM BIT_DB.FebSales 
+WHERE orderdate like '02/18/19%';
+
+-- Finding the products that include the word 'batteries'
+SELECT distinct Product
+FROM BIT_DB.FebSales
+WHERE Product like '%Batteries%';
+
+-- Finding products priced with $.99
+SELECT distinct Product, Price
+FROM BIT_DB.FebSales 
+WHERE Price like '%.99';
+
+-- Listing all the products sold in Los Angeles in February and how many of each were sold
+SELECT Product, sum(Quantity)
+FROM BIT_DB.FebSales
+WHERE Location like '%Los Angeles%'
+GROUP BY Product;
