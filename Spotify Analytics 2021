@@ -38,3 +38,16 @@ ORDER BY avg(popularity) desc; -- want to group by key and mode to compare the a
 SELECT artist_name, track_name, duration_ms
 FROM BIT_DB.Spotifydata
 ORDER BY duration_ms DESC LIMIT 1;
+
+-- Calculate the average popularity for the artists in the Spotify data table. 
+-- Then, for every artist with an average popularity of 90 or above, show their name, 
+-- their average popularity, and label them as a “Top Star”
+
+WITH pop_avg_CTE AS (
+    SELECT S.artist_name, avg(S.popularity) avg_popularity -- CTE found artist names, 
+    FROM Spotifydata S
+    GROUP BY S.artist_name
+)
+SELECT artist_name, avg_popularity, 'Top Star' AS tag
+FROM pop_avg_CTE
+WHERE avg_popularity >= 90;
