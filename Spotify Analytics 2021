@@ -44,7 +44,7 @@ ORDER BY duration_ms DESC LIMIT 1;
 -- their average popularity, and label them as a “Top Star”
 
 WITH pop_avg_CTE AS (
-    SELECT S.artist_name, avg(S.popularity) avg_popularity -- CTE found artist names, 
+    SELECT S.artist_name, avg(S.popularity) avg_popularity
     FROM Spotifydata S
     GROUP BY S.artist_name
 )
